@@ -1,0 +1,86 @@
+{
+  "id": "4753727",
+  "name": "yishoh5",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "42291120",
+      "name": "Logo",
+      "font_class": "logo",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "198920",
+      "name": "邮箱登录",
+      "font_class": "email",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "6139378",
+      "name": "微信登录",
+      "font_class": "wechat",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "13258395",
+      "name": "密码登录",
+      "font_class": "password",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "18324000",
+      "name": "购物",
+      "font_class": "shopping",
+      "unicode": "e6bc",
+      "unicode_decimal": 59068
+    },
+    {
+      "icon_id": "8797056",
+      "name": "Shop",
+      "font_class": "shop",
+      "unicode": "e86b",
+      "unicode_decimal": 59499
+    },
+    {
+      "icon_id": "28624269",
+      "name": "Ai绘图",
+      "font_class": "painting",
+      "unicode": "e6b3",
+      "unicode_decimal": 59059
+    },
+    {
+      "icon_id": "29797313",
+      "name": "历史记录",
+      "font_class": "chat-history",
+      "unicode": "100cc",
+      "unicode_decimal": 65740
+    },
+    {
+      "icon_id": "35446270",
+      "name": "AI对话",
+      "font_class": "completion",
+      "unicode": "e6bb",
+      "unicode_decimal": 59067
+    },
+    {
+      "icon_id": "37110756",
+      "name": "历史记录",
+      "font_class": "image-history",
+      "unicode": "10130",
+      "unicode_decimal": 65840
+    },
+    {
+      "icon_id": "39400189",
+      "name": "应用中心",
+      "font_class": "app",
+      "unicode": "e769",
+      "unicode_decimal": 59241
+    }
+  ]
+}

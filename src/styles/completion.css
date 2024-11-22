@@ -1,0 +1,7 @@
+.completion-container {
+  height: calc(100vh - 50px);
+}
+
+.completion-content {
+  height: calc(100vh - 94px);
+}
