@@ -1,0 +1,35 @@
+* {
+  scrollbar-color: rgb(144 147 153 / 30%) transparent; /* 滑块颜色  滚动条背景颜色 */
+  scrollbar-width: none; /* 滚动条宽度有三种：thin、auto、none */
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-button {
+  display: none;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgb(144 147 153 / 30%);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-corner {
+  display: none;
+}
+
+*::-webkit-resizer {
+  display: none;
+}
