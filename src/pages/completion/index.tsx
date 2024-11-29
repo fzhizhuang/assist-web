@@ -1,4 +1,4 @@
-import '@/styles/completion.scss';
+import '@/styles/completion.css';
 import { AddCircle } from '@nutui/icons-react';
 import { Avatar, Ellipsis, NavBar, Toast } from '@nutui/nutui-react';
 

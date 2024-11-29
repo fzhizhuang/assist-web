@@ -7,12 +7,8 @@ export const Regx = {
   codeError: '验证码必须为4位数字',
 };
 
-export const EmailRules = [
-  { required: true, message: '请输入邮箱' },
-  { pattern: Regx.email, message: Regx.emailError },
-];
-
-export const PasswordRules = [
-  { required: true, message: '请输入密码' },
-  { pattern: Regx.password, message: Regx.passwordError },
-];
+// 发送验证码DTO
+export interface SendCaptchaDTO {
+  email: string;
+  template: string | 'AUTH' | 'MODIFY_PASSWORD' | 'MODIFY_EMAIL';
+}

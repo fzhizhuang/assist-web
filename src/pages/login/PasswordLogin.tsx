@@ -2,6 +2,9 @@ import { Eye, Marshalling } from '@nutui/icons-react';
 import { Button, Input } from '@nutui/nutui-react';
 import { useEffect, useState } from 'react';
 import { Regx } from '@/types';
+import { passwordAuthentic } from '@/service/authService.ts';
+import { setToken } from '@/utils/token.ts';
+import { useNavigate } from 'react-router-dom';
 
 function PasswordLogin() {
   const [showPassword, setShowPassword] = useState('password');
@@ -10,6 +13,7 @@ function PasswordLogin() {
   const [active, setActive] = useState(true);
   const [email, setEmail] = useState<string | null>(null);
   const [password, setPassword] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleEmailChange = (e: string) => {
     setEmail(e);
@@ -30,16 +34,25 @@ function PasswordLogin() {
   };
 
   const resetForm = () => {
-    setEmail('');
-    setPassword('');
+    setEmail(null);
+    setPassword(null);
     setEmailError(null);
     setPasswordError(null);
   };
+
   const handleSubmit = () => {
-    console.log('passwordForm', {
-      email: email,
-      password: password,
-    });
+    // 执行登录逻辑
+    if (email != null && password != null) {
+      passwordAuthentic({
+        email: email,
+        password: password,
+      }).then((res) => {
+        console.log('res', res);
+        if (res) setToken(res);
+        // 跳转主页
+        navigate('/');
+      });
+    }
     resetForm();
   };
 

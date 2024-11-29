@@ -28,10 +28,5 @@ export default defineConfig({
     postcss: {
       plugins: [tailwindcss()],
     },
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "@nutui/nutui-react/dist/styles/variables.scss";`,
-      },
-    },
   },
 });
