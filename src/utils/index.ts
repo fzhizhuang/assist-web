@@ -17,29 +17,27 @@ export function getTabBar(value: number): string {
   return result;
 }
 
-
-
 export function useCounter(initCount = 60) {
-  const [count, setCount] = useState(initCount)
-  const [text, setText] = useState('获取验证码')
-  const [isSend, setIsSend] = useState(false)
+  const [count, setCount] = useState(initCount);
+  const [text, setText] = useState('获取验证码');
+  const [isSend, setIsSend] = useState(false);
   useEffect(() => {
     let intervalId: NodeJS.Timeout | undefined;
     if (isSend && count > 0) {
       intervalId = setInterval(() => {
-        setCount((prevState) => prevState - 1)
-        setText(`${count}秒后重新发送`)
-      }, 1000)
+        setCount((prevState) => prevState - 1);
+        setText(`${count}秒后重新发送`);
+      }, 1000);
     } else if (count == 0) {
-      setIsSend(false)
-      setCount(initCount)
-      setText('获取验证码')
+      setIsSend(false);
+      setCount(initCount);
+      setText('获取验证码');
     }
-    return () => clearInterval(intervalId)
-  }, [isSend, count, initCount])
+    return () => clearInterval(intervalId);
+  }, [isSend, count, initCount]);
 
   const handleCounter = () => {
-    setIsSend(true)
-  }
-  return { count, text, handleCounter, isSend }
+    setIsSend(true);
+  };
+  return { count, text, handleCounter, isSend };
 }

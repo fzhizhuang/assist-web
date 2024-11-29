@@ -23,27 +23,33 @@ function Login() {
       <div className={'fixed bottom-24 w-full flex flex-col items-center justify-center'}>
         <span className={'text-sm text-gray-400'}>其他登录方式</span>
         <div className={'mt-4 flex justify-center gap-10'}>
-          {loginType !== 'wechat' && (<IconFont
-            fontClassName="iconfont"
-            classPrefix="icon"
-            name="wechat"
-            size={36}
-            onClick={() => setLoginType('wechat')}
-          />)}
-          {loginType !== 'password' && (<IconFont
-            fontClassName="iconfont"
-            classPrefix="icon"
-            name="password"
-            size={36}
-            onClick={() => setLoginType('password')}
-          />)}
-          {loginType !== 'emailCode' && (<IconFont
-            fontClassName="iconfont"
-            classPrefix="icon"
-            name="email"
-            size={36}
-            onClick={() => setLoginType('emailCode')}
-          />)}
+          {loginType !== 'wechat' && (
+            <IconFont
+              fontClassName="iconfont"
+              classPrefix="icon"
+              name="wechat"
+              size={36}
+              onClick={() => setLoginType('wechat')}
+            />
+          )}
+          {loginType !== 'password' && (
+            <IconFont
+              fontClassName="iconfont"
+              classPrefix="icon"
+              name="password"
+              size={36}
+              onClick={() => setLoginType('password')}
+            />
+          )}
+          {loginType !== 'emailCode' && (
+            <IconFont
+              fontClassName="iconfont"
+              classPrefix="icon"
+              name="email"
+              size={36}
+              onClick={() => setLoginType('emailCode')}
+            />
+          )}
         </div>
       </div>
     </>
