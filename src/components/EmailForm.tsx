@@ -1,21 +1,25 @@
-import { Button, Input, Toast } from '@nutui/nutui-react';
 import { useCounter } from '@/utils';
 import { useEffect, useState } from 'react';
 import { Regx } from '@/types';
-import { useNavigate } from 'react-router-dom';
-import { emailAuthentic, sendEmailCaptcha } from '@/service/authService.ts';
-import { setToken } from '@/utils/token.ts';
-import { useSettingStore } from '@/store/setting.ts';
+import { sendEmailCaptcha } from '@/service/authService.ts';
+import { Button, Input, Toast } from '@nutui/nutui-react';
 
-function EmailCodeLogin() {
+interface Props {
+  // 提交按钮文字
+  submitText: string;
+  // 发送验证码模板
+  template: string;
+  // 提交表单的回调函数
+  onSubmit: (email: string, code: string) => void;
+}
+
+export function EmailForm(props: Props) {
   const { text, isSend, handleCounter } = useCounter(60);
   const [emailError, setEmailError] = useState<string | null>(null);
   const [codeError, setCodeError] = useState<string | null>(null);
   const [active, setActive] = useState(true);
   const [email, setEmail] = useState<string | null>(null);
   const [code, setCode] = useState<string | null>(null);
-  const navigate = useNavigate();
-  const { setActiveIndex } = useSettingStore();
 
   const handleEmailChange = (e: string) => {
     setEmail(e);
@@ -43,7 +47,7 @@ function EmailCodeLogin() {
       handleCounter();
       sendEmailCaptcha({
         email: email,
-        template: 'AUTH',
+        template: props.template,
       }).then(() => {
         Toast.show('验证码发送成功');
       });
@@ -60,17 +64,8 @@ function EmailCodeLogin() {
   const handleSubmit = () => {
     // 执行登录逻辑
     if (email != null && code != null) {
-      emailAuthentic({
-        email: email,
-        captcha: code,
-      }).then((res) => {
-        console.log('res', res);
-        if (res) setToken(res);
-        // 跳转主页
-        navigate('/');
-        // 更新选中导航栏
-        setActiveIndex(0);
-      });
+      // 执行提交逻辑
+      props.onSubmit(email, code);
       // 重置表单
       resetForm();
     }
@@ -123,12 +118,10 @@ function EmailCodeLogin() {
             disabled={active}
             onClick={handleSubmit}
           >
-            登录
+            {props.submitText}
           </Button>
         </div>
       </div>
     </div>
   );
 }
-
-export default EmailCodeLogin;

@@ -41,3 +41,24 @@ export function useCounter(initCount = 60) {
   };
   return { count, text, handleCounter, isSend };
 }
+
+/**
+ * base64转blob
+ * @param base64Data base64编码的数据
+ * @param contentType 内容类型
+ */
+export function base64ToBlob(base64Data: string, contentType: string) {
+  // 去掉base64编码的头部信息（比如 'data:image/png;base64,'部分）
+  const byteCharacters = atob(base64Data.split(',')[1]);
+  const byteArrays = [];
+  for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+    const slice = byteCharacters.slice(offset, offset + 512);
+    const byteNumbers = new Array(slice.length);
+    for (let i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    byteArrays.push(byteArray);
+  }
+  return new Blob(byteArrays, { type: contentType });
+}

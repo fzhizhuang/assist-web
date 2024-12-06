@@ -1,7 +1,8 @@
-// 返回结果
 import { getToken } from '@/utils/token.ts';
 
+// 返回结果
 export type Result<T> = {
+  success: boolean;
   code: string;
   msg: string;
   data: T;
@@ -20,7 +21,7 @@ interface RequestConfig {
 interface RequestOptions {
   method?: Method;
   headers?: Record<string, string>;
-  body?: string;
+  body?: object;
 }
 
 // 创建请求类
@@ -59,23 +60,6 @@ class Request {
       method,
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${getToken()}`,
-        ...headers,
-      },
-    };
-    if (method !== 'GET') {
-      requestOptions.body = JSON.stringify(body);
-    }
-    return await fetch(requestUrl, requestOptions);
-  }
-
-  // 文件上传
-  public async upload(url: string, options: RequestOptions) {
-    const { method = 'POST', headers, body } = options;
-    const requestUrl = `${this.baseConfig.baseUrl}${url}`;
-    const requestOptions: RequestInit = {
-      method,
-      headers: {
         Authorization: `Bearer ${getToken()}`,
         ...headers,
       },

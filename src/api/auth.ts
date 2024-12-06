@@ -1,5 +1,6 @@
 import { EmailAuthDTO, PasswordAuthDTO, QrCodeVO, WxAuthDTO } from '@/types/auth';
 import { Http } from '@/hooks/UseHttp.ts';
+import { SendCaptchaDTO } from '@/types';
 
 /**
  * 密码认证
@@ -8,7 +9,7 @@ import { Http } from '@/hooks/UseHttp.ts';
 export function passwordAuth(passwordAuthDto: PasswordAuthDTO) {
   return Http.request<string>('/auth/password', {
     method: 'POST',
-    body: JSON.stringify(passwordAuthDto),
+    body: passwordAuthDto,
   });
 }
 
@@ -19,7 +20,7 @@ export function passwordAuth(passwordAuthDto: PasswordAuthDTO) {
 export function emailAuth(emailAuthDto: EmailAuthDTO) {
   return Http.request<string>('/auth/email', {
     method: 'POST',
-    body: JSON.stringify(emailAuthDto),
+    body: emailAuthDto,
   });
 }
 
@@ -39,6 +40,27 @@ export function getQrCode() {
 export function wxAuth(wxAuthDto: WxAuthDTO) {
   return Http.request<string>('/auth/wx', {
     method: 'POST',
-    body: JSON.stringify(wxAuthDto),
+    body: wxAuthDto,
+  });
+}
+
+/**
+ * 发送验证码
+ * @param sendCaptchaDTO 发送验证码参数
+ */
+export function sendCaptcha(sendCaptchaDTO: SendCaptchaDTO) {
+  return Http.request('/auth/sendCaptcha', {
+    method: 'POST',
+    body: sendCaptchaDTO,
+  });
+}
+
+/**
+ * 退出登录
+ * @returns
+ */
+export function logoutApi() {
+  return Http.request<void>(`/auth/logout`, {
+    method: 'GET',
   });
 }

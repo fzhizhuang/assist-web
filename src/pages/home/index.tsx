@@ -3,6 +3,8 @@ import { Comment, User, ImageRectangle, Shop, Apps } from '@nutui/icons-react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useSettingStore } from '@/store/setting.ts';
 import { getTabBar } from '@/utils';
+import { useEffect } from 'react';
+import { getToken } from '@/utils/token.ts';
 
 function Home() {
   const navigate = useNavigate();
@@ -12,6 +14,14 @@ function Home() {
     const tabBar = getTabBar(value);
     navigate(tabBar);
   };
+  // 监听token是否存在，不存在跳转登录页面
+  useEffect(() => {
+    const token = getToken();
+    console.log(`token:${token}`);
+    if (token == null){
+      navigate('/login')
+    }
+  })
   return (
     <div className={'h-screen flex flex-col'}>
       <div className={'flex-1'}>

@@ -5,6 +5,7 @@ import { Regx } from '@/types';
 import { passwordAuthentic } from '@/service/authService.ts';
 import { setToken } from '@/utils/token.ts';
 import { useNavigate } from 'react-router-dom';
+import { useSettingStore } from '@/store/setting.ts';
 
 function PasswordLogin() {
   const [showPassword, setShowPassword] = useState('password');
@@ -14,6 +15,7 @@ function PasswordLogin() {
   const [email, setEmail] = useState<string | null>(null);
   const [password, setPassword] = useState<string | null>(null);
   const navigate = useNavigate();
+  const { setActiveIndex } = useSettingStore();
 
   const handleEmailChange = (e: string) => {
     setEmail(e);
@@ -51,6 +53,8 @@ function PasswordLogin() {
         if (res) setToken(res);
         // 跳转主页
         navigate('/');
+        // 更新选中导航栏
+        setActiveIndex(0);
       });
     }
     resetForm();
