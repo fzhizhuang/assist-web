@@ -18,10 +18,10 @@ function Home() {
   useEffect(() => {
     const token = getToken();
     console.log(`token:${token}`);
-    if (token == null){
-      navigate('/login')
+    if (token == null) {
+      navigate('/login');
     }
-  })
+  });
   return (
     <div className={'h-screen flex flex-col'}>
       <div className={'flex-1'}>
